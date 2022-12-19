@@ -1,16 +1,20 @@
-import userService, {UserService} from "../service/user-service.";
+import {UserService} from "../service/user-service";
 import {Request, Response} from "express";
 
 export class UserController {
-    private userService: UserService
+    private userController: UserService
 
     constructor() {
-        this.userService = new UserService()
+        this.userController = new UserService()
     }
 
-    getQuiz = async (req: Request, res: Response) => {
-        let topic = await userService.getTopic()
-        return res.status(200).json(topic)
+    showExams = async (req: Request, res: Response) => {
+        let exams = await this.userController.getAllExams()
+        return res.status(200).json(exams)
+    }
+    showDetails = async (req: Request, res: Response) => {
+        let examDetails = await this.userController.getExam(+req.params.examId)
+        return res.status(200).json(examDetails)
     }
 
 }

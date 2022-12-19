@@ -15,7 +15,7 @@ app.use(fileUpload({
     createParentPath: true
 }));
 app.use('', router)
-const PORT = 8080
+const PORT = 8000
 app.listen(PORT, () => {
     console.log(`Server is running ${PORT}`)
 })

@@ -26,9 +26,17 @@ __decorate([
     __metadata("design:type", String)
 ], Account.prototype, "password", void 0);
 __decorate([
+    (0, typeorm_1.Column)({ type: "varchar" }),
+    __metadata("design:type", String)
+], Account.prototype, "display_name", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: "varchar" }),
+    __metadata("design:type", String)
+], Account.prototype, "role", void 0);
+__decorate([
     (0, typeorm_1.Column)({ type: "boolean" }),
     __metadata("design:type", Boolean)
-], Account.prototype, "static", void 0);
+], Account.prototype, "status", void 0);
 Account = __decorate([
     (0, typeorm_1.Entity)({ name: 'account' })
 ], Account);

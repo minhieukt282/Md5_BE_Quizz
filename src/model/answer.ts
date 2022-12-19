@@ -7,7 +7,7 @@ export class Answer {
     @Column({type: 'varchar'})
     public answer_name: string
     @Column({type: 'boolean'})
-    public static : boolean
+    public status : boolean
     @Column({type: 'int'})
     public question_id: number
 }

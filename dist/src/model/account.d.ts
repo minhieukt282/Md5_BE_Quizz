@@ -2,5 +2,7 @@ export declare class Account {
     readonly account_id: number;
     username: string;
     password: string;
-    static: boolean;
+    display_name: string;
+    role: string;
+    status: boolean;
 }

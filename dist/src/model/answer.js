@@ -24,7 +24,7 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)({ type: 'boolean' }),
     __metadata("design:type", Boolean)
-], Answer.prototype, "static", void 0);
+], Answer.prototype, "status", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: 'int' }),
     __metadata("design:type", Number)

@@ -7,5 +7,9 @@ export class Question {
     @Column({type: 'varchar'})
     public question_name: string
     @Column({type: 'int'})
-    public topic_id: number
+    public category_id: number
+    @Column({type: 'int'})
+    public account_id: number
+    @Column({type: 'text', default: null})
+    public img: string
 }

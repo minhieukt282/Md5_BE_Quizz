@@ -24,7 +24,15 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)({ type: 'int' }),
     __metadata("design:type", Number)
-], Question.prototype, "topic_id", void 0);
+], Question.prototype, "category_id", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: 'int' }),
+    __metadata("design:type", Number)
+], Question.prototype, "account_id", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: 'text', default: null }),
+    __metadata("design:type", String)
+], Question.prototype, "img", void 0);
 Question = __decorate([
     (0, typeorm_1.Entity)({ name: 'question' })
 ], Question);

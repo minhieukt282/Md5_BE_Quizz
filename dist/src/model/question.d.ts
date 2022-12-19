@@ -1,5 +1,7 @@
 export declare class Question {
     readonly question_id: number;
     question_name: string;
-    topic_id: number;
+    category_id: number;
+    account_id: number;
+    img: string;
 }
