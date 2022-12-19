@@ -16,11 +16,17 @@ export class AnswerRepo {
     read = async () => {
         return this.answerRepo.find()
     }
-    update = async (newData) => {
-        await this.answerRepo.save(newData)
+    update = async (answer_id, answerName) => {
+        let query = `UPDATE answer
+                     SET answer_name = '${answerName}'
+                     WHERE answer_id = ${answer_id};`
+        await this.answerRepo.save(query)
     }
     del = async (id) => {
-        await this.answerRepo.delete(id)
+        let query = `DELETE
+                     FROM answer
+                     WHERE question_id = ${id};`
+        await this.answerRepo.query(query)
     }
 
 }

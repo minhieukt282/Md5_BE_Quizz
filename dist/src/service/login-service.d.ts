@@ -9,6 +9,12 @@ export declare class LoginService {
     login: (data: any) => Promise<{
         code: number;
         message: string;
+    } | {
+        code: number;
+        message: {
+            token: string;
+            account_id: any;
+        };
     }>;
     changePassword: (data: any) => Promise<{
         code: number;

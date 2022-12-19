@@ -11,8 +11,11 @@ class QuestionRepo {
         this.read = async () => {
             return this.questionRepo.find();
         };
-        this.update = async (newData) => {
-            await this.questionRepo.save(newData);
+        this.update = async (questionId, questionName) => {
+            let query = `UPDATE question
+                     SET question_name = '${questionName}'
+                     WHERE question_id = ${questionId}`;
+            await this.questionRepo.query(query);
         };
         this.del = async (id) => {
             await this.questionRepo.delete(id);

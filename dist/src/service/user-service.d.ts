@@ -6,10 +6,18 @@ export declare class UserService {
     private testService;
     private detailsService;
     private examQuestionService;
+    private randomId;
     constructor();
     getAllExams: () => Promise<any>;
     getExam: (examId: number) => Promise<any[]>;
-    createExam: (data: any) => Promise<void>;
+    createNewExam: (data: any) => Promise<void>;
+    createQuestion: (questionData: any) => Promise<any>;
+    createAnswer: (answerData: any, question_id: any) => Promise<void>;
+    createExam: (examData: any) => Promise<any>;
+    createExamQuestion: (exam_id: any, question_id: any) => Promise<void>;
+    updateQuestion: (newQuestionData: any, question_id: any) => Promise<void>;
+    updateAnswer: (newAnswerData: any, answer_id: any) => Promise<void>;
+    deleteQuestion: (question_id: any) => Promise<void>;
 }
 declare const _default: UserService;
 export default _default;

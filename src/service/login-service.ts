@@ -55,7 +55,10 @@ export class LoginService {
                     })
                     return {
                         code: 200,
-                        message: token
+                        message: {
+                            token: token,
+                            account_id: findAccount[0].account_id
+                        }
                     }
                 } else {
                     return {
@@ -75,7 +78,7 @@ export class LoginService {
     changePassword = async (data) => {
         let findAccount = await this.accountRepo.findById(data.account_id)
         let comparePassword = await bcrypt.compare(data.oldPassword, findAccount.password)
-        if (!comparePassword){
+        if (!comparePassword) {
             return {
                 code: 200,
                 message: 'Password is incorrect'

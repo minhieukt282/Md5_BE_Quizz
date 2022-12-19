@@ -54,7 +54,10 @@ class LoginService {
                         });
                         return {
                             code: 200,
-                            message: token
+                            message: {
+                                token: token,
+                                account_id: findAccount[0].account_id
+                            }
                         };
                     }
                     else {

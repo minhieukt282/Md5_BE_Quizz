@@ -8,6 +8,7 @@ const answerRepo_1 = require("../repo/answerRepo");
 const testRepo_1 = require("../repo/testRepo");
 const detailsRepo_1 = require("../repo/detailsRepo");
 const examQuestionRepo_1 = require("../repo/examQuestionRepo");
+const random_id_1 = require("./random-id");
 class UserService {
     constructor() {
         this.getAllExams = async () => {
@@ -36,7 +37,40 @@ class UserService {
             }
             return arrExam;
         };
-        this.createExam = async (data) => {
+        this.createNewExam = async (data) => {
+        };
+        this.createQuestion = async (questionData) => {
+            questionData.question_id = this.randomId.random();
+            await this.questionService.create(questionData);
+            return questionData.question_id;
+        };
+        this.createAnswer = async (answerData, question_id) => {
+            answerData.answer_id = this.randomId.random();
+            answerData.question_id = question_id;
+            await this.answerService.create(answerData);
+        };
+        this.createExam = async (examData) => {
+            examData.exam_id = this.randomId.random();
+            await this.questionService.create(examData);
+            return examData.exam_id;
+        };
+        this.createExamQuestion = async (exam_id, question_id) => {
+            let examQuestionData = {
+                examQuestion_id: this.randomId.random(),
+                exam_id: exam_id,
+                question_id: question_id
+            };
+            await this.examQuestionService.create(examQuestionData);
+        };
+        this.updateQuestion = async (newQuestionData, question_id) => {
+            await this.questionService.update(question_id, newQuestionData);
+        };
+        this.updateAnswer = async (newAnswerData, answer_id) => {
+            await this.answerService.update(answer_id, newAnswerData);
+        };
+        this.deleteQuestion = async (question_id) => {
+            await this.answerService.del(question_id);
+            await this.questionService.del(question_id);
         };
         this.examService = new examRepo_1.ExamRepo();
         this.categoryService = new categoryRepo_1.CategoryRepo();
@@ -45,6 +79,7 @@ class UserService {
         this.testService = new testRepo_1.TestRepo();
         this.detailsService = new detailsRepo_1.DetailsRepo();
         this.examQuestionService = new examQuestionRepo_1.ExamQuestionRepo();
+        this.randomId = new random_id_1.RandomId();
     }
 }
 exports.UserService = UserService;

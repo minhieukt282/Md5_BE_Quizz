@@ -17,7 +17,7 @@ export class UserController {
         return res.status(200).json(examDetails)
     }
     createExam = async (req: Request, res: Response) => {
-        let status = await this.userController.createExam(req.body)
+        let status = await this.userController.createNewExam(req.body)
         return res.status(200).json(status)
     }
 
