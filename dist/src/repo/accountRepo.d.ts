@@ -5,4 +5,6 @@ export declare class AccountRepo {
     read: () => Promise<any>;
     update: (newData: any) => Promise<void>;
     del: (id: any) => Promise<void>;
+    findOne: (username: string) => Promise<any>;
+    findStatus: (status: boolean, username: string) => Promise<any>;
 }

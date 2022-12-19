@@ -6,7 +6,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.routerUser = void 0;
 const express_1 = require("express");
 const user_controller_1 = __importDefault(require("../controller/user-controller"));
+const auth_1 = require("../middleware/auth");
 exports.routerUser = (0, express_1.Router)();
-exports.routerUser.get('/', user_controller_1.default.showExams);
+exports.routerUser.use(auth_1.auth);
+exports.routerUser.get('/home', user_controller_1.default.showExams);
 exports.routerUser.get('/:examId', user_controller_1.default.showDetails);
 //# sourceMappingURL=router-user.js.map

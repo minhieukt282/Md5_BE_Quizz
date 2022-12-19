@@ -26,15 +26,15 @@ __decorate([
     __metadata("design:type", String)
 ], Account.prototype, "password", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: "varchar" }),
+    (0, typeorm_1.Column)({ type: "varchar", default: 'undefined' }),
     __metadata("design:type", String)
 ], Account.prototype, "display_name", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: "varchar" }),
+    (0, typeorm_1.Column)({ type: "varchar", default: 'user' }),
     __metadata("design:type", String)
 ], Account.prototype, "role", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: "boolean" }),
+    (0, typeorm_1.Column)({ type: "boolean", default: true }),
     __metadata("design:type", Boolean)
 ], Account.prototype, "status", void 0);
 Account = __decorate([
