@@ -36,6 +36,8 @@ class UserService {
             }
             return arrExam;
         };
+        this.createExam = async (data) => {
+        };
         this.examService = new examRepo_1.ExamRepo();
         this.categoryService = new categoryRepo_1.CategoryRepo();
         this.questionService = new questionRepo_1.QuestionRepo();

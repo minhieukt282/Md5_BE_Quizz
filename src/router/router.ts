@@ -4,4 +4,4 @@ import {routerLogin} from "./router-login";
 
 export const router = Router()
 router.use('/', routerLogin)
-// router.use('/', routerUser)
+router.use('/', routerUser)

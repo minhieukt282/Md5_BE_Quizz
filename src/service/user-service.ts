@@ -52,6 +52,10 @@ export class UserService {
         return arrExam
     }
 
+    createExam = async (data) => {
+
+    }
+
 }
 
 export default new UserService()

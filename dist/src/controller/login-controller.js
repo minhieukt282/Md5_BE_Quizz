@@ -5,11 +5,15 @@ const login_service_1 = require("../service/login-service");
 class LoginController {
     constructor() {
         this.login = async (req, res) => {
-            let status = await this.loginController.checkLogin(req.body);
+            let status = await this.loginController.login(req.body);
             return res.status(status.code).json({ message: status.message });
         };
         this.register = async (req, res) => {
-            let status = await this.loginController.checkRegister(req.body);
+            let status = await this.loginController.register(req.body);
+            return res.status(status.code).json({ message: status.message });
+        };
+        this.changePassword = async (req, res) => {
+            let status = await this.loginController.changePassword(req.body);
             return res.status(status.code).json({ message: status.message });
         };
         this.loginController = new login_service_1.LoginService();

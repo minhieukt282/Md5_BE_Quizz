@@ -9,6 +9,7 @@ export declare class UserService {
     constructor();
     getAllExams: () => Promise<any>;
     getExam: (examId: number) => Promise<any[]>;
+    createExam: (data: any) => Promise<void>;
 }
 declare const _default: UserService;
 export default _default;

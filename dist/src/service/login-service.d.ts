@@ -1,11 +1,16 @@
 export declare class LoginService {
     private accountRepo;
+    private randomId;
     constructor();
-    checkRegister: (data: any) => Promise<{
+    register: (data: any) => Promise<{
         code: number;
         message: string;
     }>;
-    checkLogin: (data: any) => Promise<{
+    login: (data: any) => Promise<{
+        code: number;
+        message: string;
+    }>;
+    changePassword: (data: any) => Promise<{
         code: number;
         message: string;
     }>;

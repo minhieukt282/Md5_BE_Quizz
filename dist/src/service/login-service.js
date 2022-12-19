@@ -8,9 +8,10 @@ const accountRepo_1 = require("../repo/accountRepo");
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const auth_1 = require("../middleware/auth");
+const random_id_1 = require("./random-id");
 class LoginService {
     constructor() {
-        this.checkRegister = async (data) => {
+        this.register = async (data) => {
             let findAccount = await this.accountRepo.findOne(data.username);
             if (findAccount.length != 0) {
                 return {
@@ -20,6 +21,7 @@ class LoginService {
             }
             else {
                 data.password = await bcrypt_1.default.hash(data.password, 10);
+                data.account_id = this.randomId.random();
                 await this.accountRepo.create(data);
                 return {
                     code: 201,
@@ -27,7 +29,7 @@ class LoginService {
                 };
             }
         };
-        this.checkLogin = async (data) => {
+        this.login = async (data) => {
             let account = data;
             let findAccount = await this.accountRepo.findOne(account.username);
             if (findAccount.length == 0) {
@@ -42,10 +44,10 @@ class LoginService {
                 if (findAccountStatus.length === 1) {
                     if (comparePassword) {
                         let payload = {
-                            account_id: findAccount.account_id,
-                            username: findAccount.username,
-                            status: findAccount.status,
-                            role: findAccount.role
+                            account_id: findAccount[0].account_id,
+                            username: findAccount[0].username,
+                            status: findAccount[0].status,
+                            role: findAccount[0].role
                         };
                         let token = jsonwebtoken_1.default.sign(payload, auth_1.SECRET, {
                             expiresIn: 7 * 24 * 60 * 60 * 1000
@@ -70,7 +72,26 @@ class LoginService {
                 }
             }
         };
+        this.changePassword = async (data) => {
+            let findAccount = await this.accountRepo.findById(data.account_id);
+            let comparePassword = await bcrypt_1.default.compare(data.oldPassword, findAccount.password);
+            if (!comparePassword) {
+                return {
+                    code: 200,
+                    message: 'Password is incorrect'
+                };
+            }
+            else {
+                let password = await bcrypt_1.default.hash(data.newPassword, 10);
+                await this.accountRepo.updatePassword(password, data.account_id);
+                return {
+                    code: 200,
+                    message: 'Change password successfully'
+                };
+            }
+        };
         this.accountRepo = new accountRepo_1.AccountRepo();
+        this.randomId = new random_id_1.RandomId();
     }
 }
 exports.LoginService = LoginService;

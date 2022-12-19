@@ -11,11 +11,17 @@ class AccountRepo {
         this.read = async () => {
             return await this.accountRepo.find();
         };
-        this.update = async (newData) => {
-            await this.accountRepo.save(newData);
+        this.updatePassword = async (newPassword, id) => {
+            let query = `UPDATE account
+                     SET password = '${newPassword}'
+                     WHERE account_id = ${id}`;
+            await this.accountRepo.query(query);
         };
         this.del = async (id) => {
             await this.accountRepo.delete(id);
+        };
+        this.findById = async (id) => {
+            return await this.accountRepo.findOneById(id);
         };
         this.findOne = async (username) => {
             let query = `select *
@@ -24,8 +30,10 @@ class AccountRepo {
             return await this.accountRepo.query(query);
         };
         this.findStatus = async (status, username) => {
-            let query = `select * from account
-                     where status = ${status} and username = '${username}'`;
+            let query = `select *
+                     from account
+                     where status = ${status}
+                       and username = '${username}'`;
             return await this.accountRepo.query(query);
         };
         data_source_1.AppDataSource.initialize().then(connection => {

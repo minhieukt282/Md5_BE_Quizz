@@ -14,7 +14,7 @@ const typeorm_1 = require("typeorm");
 let Category = class Category {
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)({ type: 'int' }),
+    (0, typeorm_1.PrimaryGeneratedColumn)({ type: 'bigint' }),
     __metadata("design:type", Number)
 ], Category.prototype, "category_id", void 0);
 __decorate([

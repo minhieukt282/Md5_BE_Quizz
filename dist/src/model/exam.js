@@ -14,19 +14,19 @@ const typeorm_1 = require("typeorm");
 let Exam = class Exam {
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)({ type: 'int' }),
+    (0, typeorm_1.PrimaryGeneratedColumn)({ type: 'bigint' }),
     __metadata("design:type", Number)
 ], Exam.prototype, "exam_id", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'varchar' }),
+    (0, typeorm_1.Column)({ type: 'text' }),
     __metadata("design:type", String)
 ], Exam.prototype, "exam_name", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'int' }),
+    (0, typeorm_1.Column)({ type: 'bigint' }),
     __metadata("design:type", Number)
 ], Exam.prototype, "total_question", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'int' }),
+    (0, typeorm_1.Column)({ type: 'bigint' }),
     __metadata("design:type", Number)
 ], Exam.prototype, "account_id", void 0);
 __decorate([

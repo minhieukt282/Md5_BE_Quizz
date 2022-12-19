@@ -2,12 +2,12 @@ import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
 
 @Entity({name: 'test'})
 export class Test {
-    @PrimaryGeneratedColumn({type: 'int'})
+    @PrimaryGeneratedColumn({type: 'bigint'})
     public readonly test_id: number
-    @Column({type: 'int'})
+    @Column({type: 'bigint'})
     public account_id: number
-    @Column({type: 'int'})
+    @Column({type: 'bigint'})
     public exam_id: number
-    @Column({type: 'int'})
+    @Column({type: 'bigint'})
     public point: number
 }

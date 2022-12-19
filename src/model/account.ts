@@ -2,7 +2,7 @@ import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
 
 @Entity({name: 'account'})
 export class Account {
-    @PrimaryGeneratedColumn({type: 'int'})
+    @PrimaryGeneratedColumn({type: 'bigint'})
     public readonly account_id: number
     @Column({type: 'varchar'})
     public username: string

@@ -14,7 +14,7 @@ const typeorm_1 = require("typeorm");
 let Question = class Question {
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)({ type: 'int' }),
+    (0, typeorm_1.PrimaryGeneratedColumn)({ type: 'bigint' }),
     __metadata("design:type", Number)
 ], Question.prototype, "question_id", void 0);
 __decorate([
@@ -22,11 +22,11 @@ __decorate([
     __metadata("design:type", String)
 ], Question.prototype, "question_name", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'int' }),
+    (0, typeorm_1.Column)({ type: 'bigint' }),
     __metadata("design:type", Number)
 ], Question.prototype, "category_id", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'int' }),
+    (0, typeorm_1.Column)({ type: 'bigint' }),
     __metadata("design:type", Number)
 ], Question.prototype, "account_id", void 0);
 __decorate([

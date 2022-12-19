@@ -2,13 +2,13 @@ import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
 
 @Entity({name: 'exam'})
 export class Exam {
-    @PrimaryGeneratedColumn({type: 'int'})
+    @PrimaryGeneratedColumn({type: 'bigint'})
     public readonly exam_id: number
-    @Column({type: 'varchar'})
+    @Column({type: 'text'})
     public exam_name: string
-    @Column({type: 'int'})
+    @Column({type: 'bigint'})
     public total_question: number
-    @Column({type: 'int'})
+    @Column({type: 'bigint'})
     public account_id: number
     @Column({type: 'text'})
     public img: string

@@ -2,15 +2,18 @@ import {AccountRepo} from "../repo/accountRepo";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken"
 import {SECRET} from "../middleware/auth";
+import {RandomId} from "./random-id";
 
 export class LoginService {
     private accountRepo: AccountRepo
+    private randomId: RandomId
 
     constructor() {
         this.accountRepo = new AccountRepo()
+        this.randomId = new RandomId()
     }
 
-    checkRegister = async (data) => {
+    register = async (data) => {
         let findAccount = await this.accountRepo.findOne(data.username)
         if (findAccount.length != 0) {
             return {
@@ -19,6 +22,7 @@ export class LoginService {
             }
         } else {
             data.password = await bcrypt.hash(data.password, 10)
+            data.account_id = this.randomId.random()
             await this.accountRepo.create(data)
             return {
                 code: 201,
@@ -27,7 +31,7 @@ export class LoginService {
         }
     }
 
-    checkLogin = async (data) => {
+    login = async (data) => {
         let account = data
         let findAccount = await this.accountRepo.findOne(account.username)
         if (findAccount.length == 0) {
@@ -41,10 +45,10 @@ export class LoginService {
             if (findAccountStatus.length === 1) {
                 if (comparePassword) {
                     let payload = {
-                        account_id: findAccount.account_id,
-                        username: findAccount.username,
-                        status: findAccount.status,
-                        role: findAccount.role
+                        account_id: findAccount[0].account_id,
+                        username: findAccount[0].username,
+                        status: findAccount[0].status,
+                        role: findAccount[0].role
                     }
                     let token = jwt.sign(payload, SECRET, {
                         expiresIn: 7 * 24 * 60 * 60 * 1000
@@ -64,6 +68,24 @@ export class LoginService {
                     code: 200,
                     message: "Account has been locked"
                 }
+            }
+        }
+    }
+
+    changePassword = async (data) => {
+        let findAccount = await this.accountRepo.findById(data.account_id)
+        let comparePassword = await bcrypt.compare(data.oldPassword, findAccount.password)
+        if (!comparePassword){
+            return {
+                code: 200,
+                message: 'Password is incorrect'
+            }
+        } else {
+            let password = await bcrypt.hash(data.newPassword, 10)
+            await this.accountRepo.updatePassword(password, data.account_id)
+            return {
+                code: 200,
+                message: 'Change password successfully'
             }
         }
     }

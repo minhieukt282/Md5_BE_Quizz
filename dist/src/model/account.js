@@ -14,7 +14,7 @@ const typeorm_1 = require("typeorm");
 let Account = class Account {
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)({ type: 'int' }),
+    (0, typeorm_1.PrimaryGeneratedColumn)({ type: 'bigint' }),
     __metadata("design:type", Number)
 ], Account.prototype, "account_id", void 0);
 __decorate([

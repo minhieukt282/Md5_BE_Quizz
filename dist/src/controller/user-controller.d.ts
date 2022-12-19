@@ -4,6 +4,7 @@ export declare class UserController {
     constructor();
     showExams: (req: Request, res: Response) => Promise<Response<any, Record<string, any>>>;
     showDetails: (req: Request, res: Response) => Promise<Response<any, Record<string, any>>>;
+    createExam: (req: Request, res: Response) => Promise<Response<any, Record<string, any>>>;
 }
 declare const _default: UserController;
 export default _default;
