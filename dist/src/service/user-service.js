@@ -47,13 +47,13 @@ class UserService {
                 category_id: +data.exam.category_id,
                 total_question: data.questions.length,
                 account_id: data.account_id,
-                img: data.exam.img
+                img: data.exam.img_exam
             };
             const examId = await this.createExam(examData);
             for (let i = 0; i < data.questions.length; i++) {
                 let questionData = {
                     question_name: data.questions[i].question_name,
-                    img: data.questions[i].img,
+                    img: data.questions[i].img_question,
                     account_id: data.account_id,
                     category_id: +data.exam.category_id
                 };

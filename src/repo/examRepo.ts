@@ -15,7 +15,7 @@ export class ExamRepo {
         await this.exam.save(newExam)
     }
     read = async () => {
-        let query = `select e.exam_id, e.exam_name, c.category_name, e.total_question, e.img, e.account_id
+        let query = `select e.exam_id, e.exam_name, c.category_name, e.total_question, e.img as img_exam, e.account_id
                      from exam as e
                               join category c on e.category_id = c.category_id`
         return this.exam.query(query)
