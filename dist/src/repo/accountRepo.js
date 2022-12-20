@@ -9,11 +9,19 @@ class AccountRepo {
             await this.accountRepo.save(newAccount);
         };
         this.read = async () => {
-            return await this.accountRepo.find();
+            return await this.accountRepo.find({
+                where: { role: 'user' }
+            });
         };
         this.updatePassword = async (newPassword, id) => {
             let query = `UPDATE account
                      SET password = '${newPassword}'
+                     WHERE account_id = ${id}`;
+            await this.accountRepo.query(query);
+        };
+        this.updateStatus = async (status, id) => {
+            let query = `UPDATE account
+                     SET status = ${status}
                      WHERE account_id = ${id}`;
             await this.accountRepo.query(query);
         };

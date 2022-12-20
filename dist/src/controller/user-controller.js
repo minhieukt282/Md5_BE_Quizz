@@ -12,7 +12,7 @@ class UserController {
             let examDetails = await this.userController.getExam(+req.params.examId);
             return res.status(200).json(examDetails);
         };
-        this.createExam = async (req, res) => {
+        this.newExam = async (req, res) => {
             let status = await this.userController.createNewExam(req.body);
             return res.status(200).json(status);
         };

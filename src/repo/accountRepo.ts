@@ -10,22 +10,30 @@ export class AccountRepo {
         })
     }
 
-    create = async (newAccount) => {
+    create = async (newAccount: any) => {
         await this.accountRepo.save(newAccount)
     }
     read = async () => {
-        return await this.accountRepo.find()
+        return await this.accountRepo.find({
+            where: {role: 'user'}
+        })
     }
-    updatePassword = async (newPassword, id) => {
+    updatePassword = async (newPassword: string, id: number) => {
         let query = `UPDATE account
                      SET password = '${newPassword}'
                      WHERE account_id = ${id}`
         await this.accountRepo.query(query)
     }
-    del = async (id) => {
+    updateStatus = async (status: boolean, id: number) => {
+        let query = `UPDATE account
+                     SET status = ${status}
+                     WHERE account_id = ${id}`
+        await this.accountRepo.query(query)
+    }
+    del = async (id: number) => {
         await this.accountRepo.delete(id)
     }
-    findById = async (id) => {
+    findById = async (id: number) => {
         return await this.accountRepo.findOneById(id)
     }
     findOne = async (username: string) => {
