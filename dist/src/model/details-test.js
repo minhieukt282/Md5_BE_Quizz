@@ -30,6 +30,10 @@ __decorate([
     __metadata("design:type", Number)
 ], DetailsTest.prototype, "question_id", void 0);
 __decorate([
+    (0, typeorm_1.Column)({ type: 'bigint' }),
+    __metadata("design:type", Number)
+], DetailsTest.prototype, "answer_id", void 0);
+__decorate([
     (0, typeorm_1.Column)({ type: 'boolean' }),
     __metadata("design:type", Boolean)
 ], DetailsTest.prototype, "status", void 0);

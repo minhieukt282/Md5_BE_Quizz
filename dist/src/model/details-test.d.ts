@@ -3,5 +3,6 @@ export declare class DetailsTest {
     test_id: number;
     account_id: number;
     question_id: number;
+    answer_id: number;
     status: boolean;
 }

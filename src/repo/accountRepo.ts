@@ -37,17 +37,19 @@ export class AccountRepo {
         return await this.accountRepo.findOneById(id)
     }
     findOne = async (username: string) => {
-        let query = `select *
-                     from account
-                     where username = '${username}'`
-        return await this.accountRepo.query(query)
+        return await this.accountRepo.find({
+            where: {
+                username: username
+            }
+        })
     }
     findStatus = async (status: boolean, username: string) => {
-        let query = `select *
-                     from account
-                     where status = ${status}
-                       and username = '${username}'`
-        return await this.accountRepo.query(query)
+        return await this.accountRepo.find({
+            where: {
+                status: status,
+                username: username
+            }
+        })
     }
 
 }

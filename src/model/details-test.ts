@@ -10,6 +10,8 @@ export class DetailsTest {
     public account_id: number
     @Column({type: 'bigint'})
     public question_id: number
+    @Column({type: 'bigint'})
+    public answer_id: number
     @Column({type: 'boolean'})
     public status: boolean
 }

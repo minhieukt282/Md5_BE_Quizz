@@ -32,7 +32,7 @@ export class UserService {
         return await this.examService.read()
     }
     getExam = async (examId: number) => {
-        let exam = await this.examQuestionService.exam(examId)
+        const exam = await this.examQuestionService.exam(examId)
         let arrExam = []
         let arrAnswer = []
         for (let i = 0; i < exam.length; i = i + 4) {
@@ -55,22 +55,46 @@ export class UserService {
         return arrExam
     }
 
-    createNewExam = async (data) => {
-
+    createNewExam = async (data: any) => {
+        const examData = {
+            exam_name: data.exam.exam_name,
+            total_question: data.questions.length,
+            account_id: data.account_id,
+            img: data.exam.img
+        }
+        const examId = await this.createExam(examData)
+        for (let i = 0; i < data.questions.length; i++) {
+            let questionData = {
+                question_name: data.questions[i].question_name,
+                img: data.questions[i].img,
+                account_id: data.account_id,
+                category_id: 1
+            }
+            let questionId = await this.createQuestion(questionData)
+            for (let j = 0; j < data.questions[i].answers.length; j++) {
+                let answerData = {
+                    answer_name: data.questions[i].answers[j].answer,
+                    status: +data.questions[i].answers[j].status,
+                    question_id: questionId
+                }
+                await this.createAnswer(answerData)
+            }
+            await this.createExamQuestion(examId,questionId)
+        }
     }
+
     createQuestion = async (questionData) => {
         questionData.question_id = this.randomId.random()
         await this.questionService.create(questionData)
         return questionData.question_id
     }
-    createAnswer = async (answerData, question_id) => {
+    createAnswer = async (answerData) => {
         answerData.answer_id = this.randomId.random()
-        answerData.question_id = question_id
         await this.answerService.create(answerData)
     }
     createExam = async (examData) => {
         examData.exam_id = this.randomId.random()
-        await this.questionService.create(examData)
+        await this.examService.create(examData)
         return examData.exam_id
     }
     createExamQuestion = async (exam_id, question_id) => {

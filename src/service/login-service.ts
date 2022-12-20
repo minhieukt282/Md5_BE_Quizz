@@ -13,7 +13,7 @@ export class LoginService {
         this.randomId = new RandomId()
     }
 
-    register = async (data) => {
+    register = async (data: any) => {
         let findAccount = await this.accountRepo.findOne(data.username)
         if (findAccount.length != 0) {
             return {
@@ -31,7 +31,7 @@ export class LoginService {
         }
     }
 
-    login = async (data) => {
+    login = async (data: any) => {
         let account = data
         let findAccount = await this.accountRepo.findOne(account.username)
         if (findAccount.length == 0) {
@@ -75,7 +75,7 @@ export class LoginService {
         }
     }
 
-    changePassword = async (data) => {
+    changePassword = async (data: any) => {
         let findAccount = await this.accountRepo.findById(data.account_id)
         let comparePassword = await bcrypt.compare(data.oldPassword, findAccount.password)
         if (!comparePassword) {

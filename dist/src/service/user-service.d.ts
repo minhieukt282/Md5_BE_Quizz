@@ -12,7 +12,7 @@ export declare class UserService {
     getExam: (examId: number) => Promise<any[]>;
     createNewExam: (data: any) => Promise<void>;
     createQuestion: (questionData: any) => Promise<any>;
-    createAnswer: (answerData: any, question_id: any) => Promise<void>;
+    createAnswer: (answerData: any) => Promise<void>;
     createExam: (examData: any) => Promise<any>;
     createExamQuestion: (exam_id: any, question_id: any) => Promise<void>;
     updateQuestion: (newQuestionData: any, question_id: any) => Promise<void>;

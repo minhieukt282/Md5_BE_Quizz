@@ -32,17 +32,19 @@ class AccountRepo {
             return await this.accountRepo.findOneById(id);
         };
         this.findOne = async (username) => {
-            let query = `select *
-                     from account
-                     where username = '${username}'`;
-            return await this.accountRepo.query(query);
+            return await this.accountRepo.find({
+                where: {
+                    username: username
+                }
+            });
         };
         this.findStatus = async (status, username) => {
-            let query = `select *
-                     from account
-                     where status = ${status}
-                       and username = '${username}'`;
-            return await this.accountRepo.query(query);
+            return await this.accountRepo.find({
+                where: {
+                    status: status,
+                    username: username
+                }
+            });
         };
         data_source_1.AppDataSource.initialize().then(connection => {
             this.accountRepo = connection.getRepository(account_1.Account);

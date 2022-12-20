@@ -14,6 +14,7 @@ export class AdminService {
             message: accounts
         }
     }
+
     lockAccount = async (accountId: number) => {
         try {
             let account = await this.accountService.findById(accountId)
@@ -53,6 +54,7 @@ export class AdminService {
             }
         }
     }
+
     deleteAccount = async (accountId: number) => {
         try {
             let account = await this.accountService.findById(accountId)
