@@ -24,6 +24,10 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)({ type: 'bigint' }),
     __metadata("design:type", Number)
+], Exam.prototype, "category_id", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: 'bigint' }),
+    __metadata("design:type", Number)
 ], Exam.prototype, "total_question", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: 'bigint' }),

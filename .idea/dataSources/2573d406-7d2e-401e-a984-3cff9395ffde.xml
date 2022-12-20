@@ -1223,140 +1223,150 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <index id="342" parent="314" name="PRIMARY">
+    <column id="342" parent="314" name="answer_id">
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+    </column>
+    <index id="343" parent="314" name="PRIMARY">
       <ColNames>detailsTest_id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="343" parent="314" name="PRIMARY">
+    <key id="344" parent="314" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="344" parent="315" name="exam_id">
+    <column id="345" parent="315" name="exam_id">
       <AutoIncrement>1</AutoIncrement>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="345" parent="315" name="exam_name">
+    <column id="346" parent="315" name="exam_name">
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="346" parent="315" name="total_question">
+    <column id="347" parent="315" name="total_question">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="347" parent="315" name="account_id">
+    <column id="348" parent="315" name="account_id">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="348" parent="315" name="img">
+    <column id="349" parent="315" name="img">
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <index id="349" parent="315" name="PRIMARY">
+    <column id="350" parent="315" name="category_id">
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+    </column>
+    <index id="351" parent="315" name="PRIMARY">
       <ColNames>exam_id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="350" parent="315" name="PRIMARY">
+    <key id="352" parent="315" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="351" parent="316" name="examQuestion_id">
+    <column id="353" parent="316" name="examQuestion_id">
       <AutoIncrement>1</AutoIncrement>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="352" parent="316" name="exam_id">
+    <column id="354" parent="316" name="exam_id">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="353" parent="316" name="question_id">
+    <column id="355" parent="316" name="question_id">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <index id="354" parent="316" name="PRIMARY">
+    <index id="356" parent="316" name="PRIMARY">
       <ColNames>examQuestion_id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="355" parent="316" name="PRIMARY">
+    <key id="357" parent="316" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="356" parent="317" name="question_id">
+    <column id="358" parent="317" name="question_id">
       <AutoIncrement>1</AutoIncrement>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="357" parent="317" name="question_name">
+    <column id="359" parent="317" name="question_name">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="358" parent="317" name="category_id">
+    <column id="360" parent="317" name="category_id">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="359" parent="317" name="account_id">
+    <column id="361" parent="317" name="account_id">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="360" parent="317" name="img">
+    <column id="362" parent="317" name="img">
       <DataType>text|0s</DataType>
       <Position>5</Position>
     </column>
-    <index id="361" parent="317" name="PRIMARY">
+    <index id="363" parent="317" name="PRIMARY">
       <ColNames>question_id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="362" parent="317" name="PRIMARY">
+    <key id="364" parent="317" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="363" parent="318" name="test_id">
+    <column id="365" parent="318" name="test_id">
       <AutoIncrement>1</AutoIncrement>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="364" parent="318" name="account_id">
+    <column id="366" parent="318" name="account_id">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="365" parent="318" name="exam_id">
+    <column id="367" parent="318" name="exam_id">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="366" parent="318" name="point">
+    <column id="368" parent="318" name="point">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <index id="367" parent="318" name="PRIMARY">
+    <index id="369" parent="318" name="PRIMARY">
       <ColNames>test_id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="368" parent="318" name="PRIMARY">
+    <key id="370" parent="318" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>

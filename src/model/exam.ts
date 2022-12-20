@@ -7,6 +7,8 @@ export class Exam {
     @Column({type: 'text'})
     public exam_name: string
     @Column({type: 'bigint'})
+    public category_id: number
+    @Column({type: 'bigint'})
     public total_question: number
     @Column({type: 'bigint'})
     public account_id: number

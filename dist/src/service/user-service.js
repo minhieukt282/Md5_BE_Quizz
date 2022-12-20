@@ -14,32 +14,37 @@ class UserService {
         this.getAllExams = async () => {
             return await this.examService.read();
         };
-        this.getExam = async (examId) => {
-            const exam = await this.examQuestionService.exam(examId);
+        this.getExamDetails = async (examId) => {
+            const examData = await this.examQuestionService.getExamQuestion(examId);
+            const examInfo = await this.examService.findById(examId);
             let arrExam = [];
             let arrAnswer = [];
-            for (let i = 0; i < exam.length; i = i + 4) {
+            for (let i = 0; i < examData.length; i = i + 4) {
                 for (let j = i; j < i + 4; j++) {
                     let answer = {
-                        id: exam[j].answer_id,
-                        name: exam[j].answer_name,
-                        status: exam[j].status
+                        id: examData[j].answer_id,
+                        answer_name: examData[j].answer_name,
+                        status: examData[j].status
                     };
                     arrAnswer.push(answer);
                 }
                 let question = {
-                    id: exam[i].question_id,
-                    name: exam[i].question_name,
+                    id: examData[i].question_id,
+                    question_name: examData[i].question_name,
                     answers: arrAnswer
                 };
                 arrExam.push(question);
                 arrAnswer = [];
             }
-            return arrExam;
+            return {
+                examInfo: examInfo[0],
+                examData: arrExam
+            };
         };
         this.createNewExam = async (data) => {
             const examData = {
                 exam_name: data.exam.exam_name,
+                category_id: +data.exam.category_id,
                 total_question: data.questions.length,
                 account_id: data.account_id,
                 img: data.exam.img
@@ -50,7 +55,7 @@ class UserService {
                     question_name: data.questions[i].question_name,
                     img: data.questions[i].img,
                     account_id: data.account_id,
-                    category_id: 1
+                    category_id: +data.exam.category_id
                 };
                 let questionId = await this.createQuestion(questionData);
                 for (let j = 0; j < data.questions[i].answers.length; j++) {
@@ -63,6 +68,10 @@ class UserService {
                 }
                 await this.createExamQuestion(examId, questionId);
             }
+            return {
+                code: 201,
+                message: "Create exam done"
+            };
         };
         this.createQuestion = async (questionData) => {
             questionData.question_id = this.randomId.random();

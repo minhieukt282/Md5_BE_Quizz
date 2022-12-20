@@ -9,12 +9,12 @@ class UserController {
             return res.status(200).json(exams);
         };
         this.showDetails = async (req, res) => {
-            let examDetails = await this.userController.getExam(+req.params.examId);
+            let examDetails = await this.userController.getExamDetails(+req.params.examId);
             return res.status(200).json(examDetails);
         };
         this.newExam = async (req, res) => {
             let status = await this.userController.createNewExam(req.body);
-            return res.status(200).json(status);
+            return res.status(status.code).json({ message: status.message });
         };
         this.userController = new user_service_1.UserService();
     }

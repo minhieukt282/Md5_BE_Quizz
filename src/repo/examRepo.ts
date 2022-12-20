@@ -1,5 +1,6 @@
 import {AppDataSource} from "../data-source";
 import {Exam} from "../model/exam";
+import {query} from "express";
 
 export class ExamRepo {
     private exam: any
@@ -10,17 +11,26 @@ export class ExamRepo {
         })
     }
 
-    create = async (newExam) => {
+    create = async (newExam: any) => {
         await this.exam.save(newExam)
     }
     read = async () => {
-        return this.exam.find()
+        let query = `select e.exam_id, e.exam_name, c.category_name, e.total_question, e.img, e.account_id
+                     from exam as e
+                              join category c on e.category_id = c.category_id`
+        return this.exam.query(query)
     }
-    update = async (newData) => {
+    update = async (newData: any) => {
         await this.exam.save(newData)
     }
-    del = async (id) => {
+    del = async (id: number) => {
         await this.exam.delete(id)
     }
+    findById = async (id: number) => {
+        return await this.exam.find({
+            where: {exam_id: id}
+        })
+    }
 }
+
 export default new ExamRepo()

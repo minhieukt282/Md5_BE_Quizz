@@ -9,12 +9,18 @@ export declare class UserService {
     private randomId;
     constructor();
     getAllExams: () => Promise<any>;
-    getExam: (examId: number) => Promise<any[]>;
-    createNewExam: (data: any) => Promise<void>;
+    getExamDetails: (examId: number) => Promise<{
+        examInfo: any;
+        examData: any[];
+    }>;
+    createNewExam: (data: any) => Promise<{
+        code: number;
+        message: string;
+    }>;
     createQuestion: (questionData: any) => Promise<any>;
     createAnswer: (answerData: any) => Promise<void>;
     createExam: (examData: any) => Promise<any>;
-    createExamQuestion: (exam_id: any, question_id: any) => Promise<void>;
+    createExamQuestion: (exam_id: number, question_id: number) => Promise<void>;
     updateQuestion: (newQuestionData: any, question_id: any) => Promise<void>;
     updateAnswer: (newAnswerData: any, answer_id: any) => Promise<void>;
     deleteQuestion: (question_id: any) => Promise<void>;

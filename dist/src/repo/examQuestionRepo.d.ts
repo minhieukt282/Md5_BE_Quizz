@@ -5,5 +5,5 @@ export declare class ExamQuestionRepo {
     read: () => Promise<any>;
     update: (newData: any) => Promise<void>;
     del: (id: number) => Promise<void>;
-    exam: (id: number) => Promise<any>;
+    getExamQuestion: (id: number) => Promise<any>;
 }

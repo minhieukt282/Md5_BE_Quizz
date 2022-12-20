@@ -17,7 +17,7 @@ class ExamQuestionRepo {
         this.del = async (id) => {
             await this.exam_question.delete(id);
         };
-        this.exam = async (id) => {
+        this.getExamQuestion = async (id) => {
             let query = `select eq.exam_id, q.question_id, q.question_name, q.img, a.answer_id, a.answer_name, a.status
                      from \`exam-question\` as eq
                               join question q on eq.question_id = q.question_id
