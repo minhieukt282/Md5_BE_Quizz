@@ -24,6 +24,7 @@ export declare class UserService {
     updateQuestion: (newQuestionData: any, question_id: any) => Promise<void>;
     updateAnswer: (newAnswerData: any, answer_id: any) => Promise<void>;
     deleteQuestion: (question_id: any) => Promise<void>;
+    getCategory: () => Promise<any>;
 }
 declare const _default: UserService;
 export default _default;

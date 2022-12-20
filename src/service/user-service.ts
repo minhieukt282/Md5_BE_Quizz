@@ -126,6 +126,9 @@ export class UserService {
         await this.questionService.del(question_id)
     }
 
+    getCategory = async () => {
+        return  await this.categoryService.read()
+    }
 }
 
 export default new UserService()

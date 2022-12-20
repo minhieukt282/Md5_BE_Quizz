@@ -105,6 +105,9 @@ class UserService {
             await this.answerService.del(question_id);
             await this.questionService.del(question_id);
         };
+        this.getCategory = async () => {
+            return await this.categoryService.read();
+        };
         this.examService = new examRepo_1.ExamRepo();
         this.categoryService = new categoryRepo_1.CategoryRepo();
         this.questionService = new questionRepo_1.QuestionRepo();
