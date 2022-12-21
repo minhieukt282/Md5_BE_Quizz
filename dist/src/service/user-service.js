@@ -122,7 +122,7 @@ class UserService {
                 };
                 await this.detailsService.create(detailsData);
             }
-            let point = await this.detailsService.countStatus(data.account_id, testId);
+            const point = await this.detailsService.countStatus(data.account_id, testId);
             const testData = {
                 test_id: testId,
                 account_id: data.account_id,
@@ -135,8 +135,26 @@ class UserService {
                 message: "Submit done"
             };
         };
-        this.getTest = async (accountId) => {
-            let tests = await this.testService.read(accountId);
+        this.getMyTest = async (account_id) => {
+            let tests = await this.testService.findById(account_id);
+            if (tests.length != 0) {
+                return {
+                    code: 200,
+                    message: tests
+                };
+            }
+            else
+                return {
+                    code: 200,
+                    message: "You haven't taken any test yet"
+                };
+        };
+        this.getDetailsTest = async (testId, accountId) => {
+            let details = await this.detailsService.findById(testId, accountId);
+            return {
+                code: 200,
+                message: details
+            };
         };
         this.examService = new examRepo_1.ExamRepo();
         this.categoryService = new categoryRepo_1.CategoryRepo();

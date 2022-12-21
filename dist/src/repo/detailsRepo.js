@@ -25,6 +25,15 @@ class DetailsRepo {
                        and test_id = ${testId}`;
             return await this.detailsRepo.query(query);
         };
+        this.findById = async (testId, accountId) => {
+            let query = `select q.question_name, a.answer_name, d.status
+                     from details as d
+                              join answer a on d.answer_id = a.answer_id
+                              join question q on d.question_id = q.question_id
+                     where d.test_id = ${testId}
+                       and d.account_id = ${accountId}`;
+            return await this.detailsRepo.query(query);
+        };
         data_source_1.AppDataSource.initialize().then(connection => {
             this.detailsRepo = connection.getRepository(details_test_1.DetailsTest);
         });

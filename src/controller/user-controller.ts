@@ -28,9 +28,13 @@ export class UserController {
         let status = await this.userController.createTest(req.body)
         return res.status(status.code).json(status.message)
     }
-    showTest = async (req: Request, res: Response) => {
-        let status = await this.userController.getTest(req.body)
-        // return res.status(status.code).json(status.message)
+    showMyTest = async (req: Request, res: Response) => {
+        let status = await this.userController.getMyTest(+req.body.account_id)
+        return res.status(status.code).json(status.message)
+    }
+    showDetailsTest = async (req: Request, res: Response) => {
+        let status = await this.userController.getDetailsTest(+req.params.testId, +req.body.account_id)
+        return res.status(status.code).json(status.message)
     }
 
 }

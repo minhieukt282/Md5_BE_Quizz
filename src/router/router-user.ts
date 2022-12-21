@@ -9,5 +9,6 @@ routerUser.get('/exams', userController.showExams)
 routerUser.get('/exams/:examId', userController.showDetails)
 routerUser.post('/exams', userController.newExam)
 routerUser.post('/tests', userController.createTest)
-// routerUser.get('/tests', userController.showTest)
+routerUser.post('/my-tests', userController.showMyTest)
+routerUser.post('/my-tests/:testId', userController.showDetailsTest)
 

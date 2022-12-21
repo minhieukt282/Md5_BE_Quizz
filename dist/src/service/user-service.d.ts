@@ -29,7 +29,14 @@ export declare class UserService {
         code: number;
         message: string;
     }>;
-    getTest: (accountId: number) => Promise<void>;
+    getMyTest: (account_id: number) => Promise<{
+        code: number;
+        message: any;
+    }>;
+    getDetailsTest: (testId: number, accountId: number) => Promise<{
+        code: number;
+        message: any;
+    }>;
 }
 declare const _default: UserService;
 export default _default;

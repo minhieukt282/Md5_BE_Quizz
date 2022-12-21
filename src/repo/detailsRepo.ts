@@ -30,5 +30,14 @@ export class DetailsRepo {
                        and test_id = ${testId}`
         return await this.detailsRepo.query(query)
     }
+    findById = async (testId: number, accountId: number) => {
+        let query = `select q.question_name, a.answer_name, d.status
+                     from details as d
+                              join answer a on d.answer_id = a.answer_id
+                              join question q on d.question_id = q.question_id
+                     where d.test_id = ${testId}
+                       and d.account_id = ${accountId}`
+        return await this.detailsRepo.query(query)
+    }
 
 }

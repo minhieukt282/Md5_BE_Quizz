@@ -144,7 +144,7 @@ export class UserService {
             }
             await this.detailsService.create(detailsData)
         }
-        let point = await this.detailsService.countStatus(data.account_id, testId)
+        const point = await this.detailsService.countStatus(data.account_id, testId)
         const testData = {
             test_id: testId,
             account_id: data.account_id,
@@ -158,8 +158,24 @@ export class UserService {
         }
     }
 
-    getTest = async (accountId: number) => {
-        let tests = await this.testService.read(accountId)
+    getMyTest = async (account_id: number) => {
+        let tests = await this.testService.findById(account_id)
+        if (tests.length != 0) {
+            return {
+                code: 200,
+                message: tests
+            }
+        } else return {
+            code: 200,
+            message: "You haven't taken any test yet"
+        }
+    }
+    getDetailsTest = async (testId: number, accountId: number) => {
+        let details = await this.detailsService.findById(testId, accountId)
+        return {
+            code: 200,
+            message: details
+        }
     }
 }
 

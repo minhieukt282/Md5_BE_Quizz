@@ -24,8 +24,13 @@ class UserController {
             let status = await this.userController.createTest(req.body);
             return res.status(status.code).json(status.message);
         };
-        this.showTest = async (req, res) => {
-            let status = await this.userController.getTest(req.body);
+        this.showMyTest = async (req, res) => {
+            let status = await this.userController.getMyTest(+req.body.account_id);
+            return res.status(status.code).json(status.message);
+        };
+        this.showDetailsTest = async (req, res) => {
+            let status = await this.userController.getDetailsTest(+req.params.testId, +req.body.account_id);
+            return res.status(status.code).json(status.message);
         };
         this.userController = new user_service_1.UserService();
     }
