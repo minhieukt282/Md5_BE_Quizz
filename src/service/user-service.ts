@@ -127,10 +127,10 @@ export class UserService {
     }
 
     getCategory = async () => {
-        return  await this.categoryService.read()
+        return await this.categoryService.read()
     }
 
-    createTest = async (data: any)=>{
+    createTest = async (data: any) => {
         const testId = this.randomId.random()
         for (let i = 0; i < data.questions.length; i++) {
             let detailsId = this.randomId.random()
@@ -144,9 +144,9 @@ export class UserService {
             }
             await this.detailsService.create(detailsData)
         }
-        let point = await this.detailsService.countStatus()
+        let point = await this.detailsService.countStatus(data.account_id, testId)
         const testData = {
-            test_id : testId,
+            test_id: testId,
             account_id: data.account_id,
             exam_id: data.exam_id,
             point: point[0].point
@@ -156,6 +156,10 @@ export class UserService {
             code: 201,
             message: "Submit done"
         }
+    }
+
+    getTest = async (accountId: number) => {
+        let tests = await this.testService.read(accountId)
     }
 }
 

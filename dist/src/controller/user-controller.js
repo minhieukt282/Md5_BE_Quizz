@@ -20,9 +20,12 @@ class UserController {
             let category = await this.userController.getCategory();
             return res.status(200).json(category);
         };
-        this.myTest = async (req, res) => {
+        this.createTest = async (req, res) => {
             let status = await this.userController.createTest(req.body);
             return res.status(status.code).json(status.message);
+        };
+        this.showTest = async (req, res) => {
+            let status = await this.userController.getTest(req.body);
         };
         this.userController = new user_service_1.UserService();
     }

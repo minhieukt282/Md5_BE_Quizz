@@ -24,9 +24,13 @@ export class UserController {
         let category = await this.userController.getCategory()
         return res.status(200).json(category)
     }
-    myTest = async (req: Request, res: Response) => {
+    createTest = async (req: Request, res: Response) => {
         let status = await this.userController.createTest(req.body)
         return res.status(status.code).json(status.message)
+    }
+    showTest = async (req: Request, res: Response) => {
+        let status = await this.userController.getTest(req.body)
+        // return res.status(status.code).json(status.message)
     }
 
 }

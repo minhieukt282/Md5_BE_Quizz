@@ -29,6 +29,7 @@ export declare class UserService {
         code: number;
         message: string;
     }>;
+    getTest: (accountId: number) => Promise<void>;
 }
 declare const _default: UserService;
 export default _default;

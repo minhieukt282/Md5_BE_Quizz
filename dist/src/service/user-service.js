@@ -122,7 +122,7 @@ class UserService {
                 };
                 await this.detailsService.create(detailsData);
             }
-            let point = await this.detailsService.countStatus();
+            let point = await this.detailsService.countStatus(data.account_id, testId);
             const testData = {
                 test_id: testId,
                 account_id: data.account_id,
@@ -134,6 +134,9 @@ class UserService {
                 code: 201,
                 message: "Submit done"
             };
+        };
+        this.getTest = async (accountId) => {
+            let tests = await this.testService.read(accountId);
         };
         this.examService = new examRepo_1.ExamRepo();
         this.categoryService = new categoryRepo_1.CategoryRepo();

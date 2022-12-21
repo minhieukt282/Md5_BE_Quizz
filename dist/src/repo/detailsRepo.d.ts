@@ -5,5 +5,5 @@ export declare class DetailsRepo {
     read: () => Promise<any>;
     update: (newData: any) => Promise<void>;
     del: (id: any) => Promise<void>;
-    countStatus: () => Promise<any>;
+    countStatus: (accountId: number, testId: number) => Promise<any>;
 }

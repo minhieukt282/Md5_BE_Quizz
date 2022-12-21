@@ -17,10 +17,12 @@ class DetailsRepo {
         this.del = async (id) => {
             await this.detailsRepo.delete(id);
         };
-        this.countStatus = async () => {
+        this.countStatus = async (accountId, testId) => {
             let query = `select COUNT(status) as point
                      from details
-                     where status = true`;
+                     where status = true
+                       and account_id = ${accountId}
+                       and test_id = ${testId}`;
             return await this.detailsRepo.query(query);
         };
         data_source_1.AppDataSource.initialize().then(connection => {

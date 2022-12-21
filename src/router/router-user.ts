@@ -8,5 +8,6 @@ routerUser.get('/category', userController.showCategory)
 routerUser.get('/exams', userController.showExams)
 routerUser.get('/exams/:examId', userController.showDetails)
 routerUser.post('/exams', userController.newExam)
-routerUser.post('/tests', userController.myTest)
+routerUser.post('/tests', userController.createTest)
+// routerUser.get('/tests', userController.showTest)
 

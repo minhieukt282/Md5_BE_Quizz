@@ -13,5 +13,5 @@ exports.routerUser.get('/category', user_controller_1.default.showCategory);
 exports.routerUser.get('/exams', user_controller_1.default.showExams);
 exports.routerUser.get('/exams/:examId', user_controller_1.default.showDetails);
 exports.routerUser.post('/exams', user_controller_1.default.newExam);
-exports.routerUser.post('/tests', user_controller_1.default.myTest);
+exports.routerUser.post('/tests', user_controller_1.default.createTest);
 //# sourceMappingURL=router-user.js.map

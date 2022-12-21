@@ -22,10 +22,12 @@ export class DetailsRepo {
     del = async (id) => {
         await this.detailsRepo.delete(id)
     }
-    countStatus = async () => {
+    countStatus = async (accountId: number, testId: number) => {
         let query = `select COUNT(status) as point
                      from details
-                     where status = true`
+                     where status = true
+                       and account_id = ${accountId}
+                       and test_id = ${testId}`
         return await this.detailsRepo.query(query)
     }
 
