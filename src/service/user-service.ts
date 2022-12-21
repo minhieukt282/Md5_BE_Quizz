@@ -114,6 +114,18 @@ export class UserService {
         }
         await this.examQuestionService.create(examQuestionData)
     }
+    getMyExam = async (accountId: number) => {
+        let exams = await this.examService.findByAccount(accountId)
+        if (exams.length != 0)
+            return {
+                code: 200,
+                message: exams
+            }
+        else return {
+            code: 200,
+            message: "You don't have any tests yet"
+        }
+    }
 
     updateQuestion = async (newQuestionData, question_id) => {
         await this.questionService.update(question_id, newQuestionData)

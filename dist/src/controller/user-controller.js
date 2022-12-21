@@ -16,6 +16,10 @@ class UserController {
             let status = await this.userController.createNewExam(req.body);
             return res.status(status.code).json({ message: status.message });
         };
+        this.showMyExam = async (req, res) => {
+            let status = await this.userController.getMyExam(+req.body.account_id);
+            return res.status(status.code).json({ message: status.message });
+        };
         this.showCategory = async (req, res) => {
             let category = await this.userController.getCategory();
             return res.status(200).json(category);
