@@ -20,9 +20,13 @@ export class UserController {
         let status = await this.userController.createNewExam(req.body)
         return res.status(status.code).json({message: status.message})
     }
-    showCategory =  async (req: Request, res: Response) => {
+    showCategory = async (req: Request, res: Response) => {
         let category = await this.userController.getCategory()
         return res.status(200).json(category)
+    }
+    myTest = async (req: Request, res: Response) => {
+        let status = await this.userController.createTest(req.body)
+        return res.status(status.code).json(status.message)
     }
 
 }

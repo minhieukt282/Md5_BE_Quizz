@@ -13,8 +13,12 @@ export class TestRepo {
     create = async (newTest) => {
         await this.test.save(newTest)
     }
-    read = async () => {
-        return this.test.find()
+    read = async (accountId: number) => {
+        return this.test.find({
+            where: {
+                account_id: accountId
+            }
+        })
     }
     update = async (newData) => {
         await this.test.save(newData)

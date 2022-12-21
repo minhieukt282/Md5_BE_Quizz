@@ -8,8 +8,12 @@ class TestRepo {
         this.create = async (newTest) => {
             await this.test.save(newTest);
         };
-        this.read = async () => {
-            return this.test.find();
+        this.read = async (accountId) => {
+            return this.test.find({
+                where: {
+                    account_id: accountId
+                }
+            });
         };
         this.update = async (newData) => {
             await this.test.save(newData);

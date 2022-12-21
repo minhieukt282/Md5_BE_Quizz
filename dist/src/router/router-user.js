@@ -9,8 +9,9 @@ const user_controller_1 = __importDefault(require("../controller/user-controller
 const auth_1 = require("../middleware/auth");
 exports.routerUser = (0, express_1.Router)();
 exports.routerUser.use(auth_1.auth);
+exports.routerUser.get('/category', user_controller_1.default.showCategory);
 exports.routerUser.get('/exams', user_controller_1.default.showExams);
 exports.routerUser.get('/exams/:examId', user_controller_1.default.showDetails);
 exports.routerUser.post('/exams', user_controller_1.default.newExam);
-exports.routerUser.get('/category', user_controller_1.default.showCategory);
+exports.routerUser.post('/tests', user_controller_1.default.myTest);
 //# sourceMappingURL=router-user.js.map

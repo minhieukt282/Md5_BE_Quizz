@@ -17,6 +17,12 @@ class DetailsRepo {
         this.del = async (id) => {
             await this.detailsRepo.delete(id);
         };
+        this.countStatus = async () => {
+            let query = `select COUNT(status) as point
+                     from details
+                     where status = true`;
+            return await this.detailsRepo.query(query);
+        };
         data_source_1.AppDataSource.initialize().then(connection => {
             this.detailsRepo = connection.getRepository(details_test_1.DetailsTest);
         });

@@ -22,5 +22,11 @@ export class DetailsRepo {
     del = async (id) => {
         await this.detailsRepo.delete(id)
     }
+    countStatus = async () => {
+        let query = `select COUNT(status) as point
+                     from details
+                     where status = true`
+        return await this.detailsRepo.query(query)
+    }
 
 }

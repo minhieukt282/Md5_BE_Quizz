@@ -27,7 +27,8 @@ export class ExamQuestionRepo {
                      from \`exam-question\` as eq
                               join question q on eq.question_id = q.question_id
                               join answer a on q.question_id = a.question_id
-                     where eq.exam_id = ${id}`
+                     where eq.exam_id = ${id}
+                     order by q.question_id desc`
         return this.exam_question.query(query)
     }
 

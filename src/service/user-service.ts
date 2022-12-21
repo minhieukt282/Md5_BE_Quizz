@@ -39,14 +39,14 @@ export class UserService {
         for (let i = 0; i < examData.length; i = i + 4) {
             for (let j = i; j < i + 4; j++) {
                 let answer = {
-                    id: examData[j].answer_id,
+                    answer_id: examData[j].answer_id,
                     answer_name: examData[j].answer_name,
                     status: examData[j].status
                 }
                 arrAnswer.push(answer)
             }
             let question = {
-                id: examData[i].question_id,
+                question_id: examData[i].question_id,
                 question_name: examData[i].question_name,
                 answers: arrAnswer
             }
@@ -128,6 +128,34 @@ export class UserService {
 
     getCategory = async () => {
         return  await this.categoryService.read()
+    }
+
+    createTest = async (data: any)=>{
+        const testId = this.randomId.random()
+        for (let i = 0; i < data.questions.length; i++) {
+            let detailsId = this.randomId.random()
+            let detailsData = {
+                detailsTest_id: detailsId,
+                test_id: testId,
+                account_id: data.account_id,
+                question_id: data.questions[i].question_id,
+                answer_id: data.questions[i].answer_id,
+                status: data.questions[i].status
+            }
+            await this.detailsService.create(detailsData)
+        }
+        let point = await this.detailsService.countStatus()
+        const testData = {
+            test_id : testId,
+            account_id: data.account_id,
+            exam_id: data.exam_id,
+            point: point[0].point
+        }
+        await this.testService.create(testData)
+        return {
+            code: 201,
+            message: "Submit done"
+        }
     }
 }
 

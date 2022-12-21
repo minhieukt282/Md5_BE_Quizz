@@ -6,6 +6,7 @@ export declare class UserController {
     showDetails: (req: Request, res: Response) => Promise<Response<any, Record<string, any>>>;
     newExam: (req: Request, res: Response) => Promise<Response<any, Record<string, any>>>;
     showCategory: (req: Request, res: Response) => Promise<Response<any, Record<string, any>>>;
+    myTest: (req: Request, res: Response) => Promise<Response<any, Record<string, any>>>;
 }
 declare const _default: UserController;
 export default _default;

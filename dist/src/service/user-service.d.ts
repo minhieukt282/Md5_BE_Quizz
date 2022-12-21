@@ -25,6 +25,10 @@ export declare class UserService {
     updateAnswer: (newAnswerData: any, answer_id: any) => Promise<void>;
     deleteQuestion: (question_id: any) => Promise<void>;
     getCategory: () => Promise<any>;
+    createTest: (data: any) => Promise<{
+        code: number;
+        message: string;
+    }>;
 }
 declare const _default: UserService;
 export default _default;
