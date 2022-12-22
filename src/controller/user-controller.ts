@@ -20,6 +20,10 @@ export class UserController {
         let status = await this.userController.createNewExam(req.body)
         return res.status(status.code).json({message: status.message})
     }
+    newQuestions = async (req: Request, res: Response) => {
+        let status = await this.userController.createNewQuestions(req.body)
+        return res.status(status.code).json({message: status.message})
+    }
     showMyExam = async (req: Request, res: Response) => {
         let status = await this.userController.getMyExam(+req.body.account_id)
         return res.status(status.code).json({message: status.message})

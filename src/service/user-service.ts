@@ -61,34 +61,41 @@ export class UserService {
 
     createNewExam = async (data: any) => {
         const examData = {
-            exam_name: data.exam.exam_name,
-            category_id: +data.exam.category_id,
-            total_question: data.questions.length,
+            exam_id: this.randomId.random(),
+            exam_name: data.exam_name,
+            category_id: +data.category_id,
+            total_question: 0,
             account_id: data.account_id,
-            img: data.exam.img_exam
+            img: data.img_exam
         }
-        const examId = await this.createExam(examData)
-        for (let i = 0; i < data.questions.length; i++) {
-            let questionData = {
-                question_name: data.questions[i].question_name,
-                img: data.questions[i].img_question,
-                account_id: data.account_id,
-                category_id: +data.exam.category_id
-            }
-            let questionId = await this.createQuestion(questionData)
-            for (let j = 0; j < data.questions[i].answers.length; j++) {
-                let answerData = {
-                    answer_name: data.questions[i].answers[j].answer,
-                    status: +data.questions[i].answers[j].status,
-                    question_id: questionId
-                }
-                await this.createAnswer(answerData)
-            }
-            await this.createExamQuestion(examId, questionId)
-        }
+        await this.examService.create(examData)
         return {
             code: 201,
             message: "Create exam done"
+        }
+    }
+
+    createNewQuestions = async (data: any) => {
+        console.log(data)
+        const questionData = {
+            question_name: data.question_name,
+            category_id: 1,
+            account_id: data.account_id,
+            img: data.img
+        }
+        const questionId = await this.createQuestion(questionData)
+        for (let i = 0; i < data.answers.length; i++) {
+            let answerData = {
+                answer_name: data.answers[i].answer,
+                status: data.answers[i].status,
+                question_id: questionId
+            }
+            await this.createAnswer(answerData)
+        }
+        await this.createExamQuestion(data.exam_id, questionId)
+        return {
+            code: 201,
+            message: "Create question done"
         }
     }
 
@@ -101,11 +108,6 @@ export class UserService {
         answerData.answer_id = this.randomId.random()
         await this.answerService.create(answerData)
     }
-    createExam = async (examData: any) => {
-        examData.exam_id = this.randomId.random()
-        await this.examService.create(examData)
-        return examData.exam_id
-    }
     createExamQuestion = async (exam_id: number, question_id: number) => {
         let examQuestionData = {
             examQuestion_id: this.randomId.random(),
@@ -114,6 +116,7 @@ export class UserService {
         }
         await this.examQuestionService.create(examQuestionData)
     }
+
     getMyExam = async (accountId: number) => {
         let exams = await this.examService.findByAccount(accountId)
         if (exams.length != 0)

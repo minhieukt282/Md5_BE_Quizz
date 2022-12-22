@@ -5,6 +5,7 @@ export declare class UserController {
     showExams: (req: Request, res: Response) => Promise<Response<any, Record<string, any>>>;
     showDetails: (req: Request, res: Response) => Promise<Response<any, Record<string, any>>>;
     newExam: (req: Request, res: Response) => Promise<Response<any, Record<string, any>>>;
+    newQuestions: (req: Request, res: Response) => Promise<Response<any, Record<string, any>>>;
     showMyExam: (req: Request, res: Response) => Promise<Response<any, Record<string, any>>>;
     showCategory: (req: Request, res: Response) => Promise<Response<any, Record<string, any>>>;
     createTest: (req: Request, res: Response) => Promise<Response<any, Record<string, any>>>;

@@ -17,9 +17,12 @@ export declare class UserService {
         code: number;
         message: string;
     }>;
+    createNewQuestions: (data: any) => Promise<{
+        code: number;
+        message: string;
+    }>;
     createQuestion: (questionData: any) => Promise<any>;
     createAnswer: (answerData: any) => Promise<void>;
-    createExam: (examData: any) => Promise<any>;
     createExamQuestion: (exam_id: number, question_id: number) => Promise<void>;
     getMyExam: (accountId: number) => Promise<{
         code: number;
